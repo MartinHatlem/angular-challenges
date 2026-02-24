@@ -12,7 +12,7 @@ import { ListItemComponent } from '../list-item/list-item.component';
       <section>
         @for (item of list(); track item) {
           <app-list-item
-            [name]="item.firstName"
+            [name]="item.firstName ? item.firstName : item.name"
             [id]="item.id"
             [deleteById]="deleteById()" />
         }
@@ -40,13 +40,6 @@ export class CardComponent {
 
   deleteById = input<(id: number) => void>(() => {
     console.warn('Delete by ID handler not provided');
+    // Default behavior if no handler is provided
   });
-
-  //   const type = this.type();
-  //   if (type === CardType.TEACHER) {
-  //     this.teacherStore.addOne(randTeacher());
-  //   } else if (type === CardType.STUDENT) {
-  //     this.studentStore.addOne(randStudent());
-  //   }
-  // }
 }
